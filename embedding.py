@@ -1,4 +1,7 @@
 import openai
+from config import API_KEY
+
+openai.api_key = API_KEY
 
 def get_embeddings(papers):
     texts = [paper.title + " " + paper.summary for paper in papers]

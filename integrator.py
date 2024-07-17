@@ -1,9 +1,15 @@
 import openai
+from config import API_KEY
+
+openai.api_key = API_KEY
 
 def integrate_summaries(summaries):
-    response = openai.Completion.create(
+    response = openai.ChatCompletion.create(
         model="claude-3-sonnet",
-        prompt="Summarize the following papers:\n" + "\n".join(summaries),
+        messages=[
+            {"role": "system", "content": "Summarize the following papers."},
+            {"role": "user", "content": "\n".join(summaries)}
+        ],
         max_tokens=1000
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message['content'].strip()
