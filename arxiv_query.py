@@ -5,7 +5,10 @@ def query_arxiv(search_word):
     response = arxiv_client.results(
         search=arxiv.Search(
             query=search_word,
-            max_results=100,
+            sort_by=arxiv.SortCriterion.Relevance,
+            sort_order=arxiv.SortOrder.Descending,
+            max_results=1,
         )
     )
-    return [item for item in response]
+    urls = [item.entry_id for item in response]
+    return urls
