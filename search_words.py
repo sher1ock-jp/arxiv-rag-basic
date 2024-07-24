@@ -21,12 +21,11 @@
         
 #         print("API Response:", response)
         
-        
 #         message_content = response.choices[0].message.content
 #         print("Message Content:", message_content)
         
-        
 #         search_words = json.loads(message_content)["search_words"]
+#         print("Search Words:", search_words)
 #         return search_words
 
 #     except Exception as e:

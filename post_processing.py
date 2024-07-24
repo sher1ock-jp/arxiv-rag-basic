@@ -1,7 +1,9 @@
 import requests
 import os
 
-def download_pdf(pdf_url, save_path):
+save_path = './pdf_storage'
+
+def download_pdf(pdf_url):
     try:
         if not pdf_url.startswith('http'):
             raise ValueError("Invalid URL")
@@ -24,10 +26,3 @@ def download_pdf(pdf_url, save_path):
         print(f"Value error: {ve}")
     except Exception as e:
         print(f"An error occurred: {e}")
-
-# def filter_results(results, search_word):
-#     filtered = []
-#     for item in results:
-#         if any(word.lower() in item.title.lower() for word in search_word.split(" ")):
-#                 filtered.append(item)
-#     return filtered
