@@ -1,9 +1,14 @@
 import requests
 import os
 
-save_path = './pdf_storage'
+save_path = './paper_input_storage'
 
-def download_pdf(pdf_url):
+def download_paper(pdf_url, paper_title):
+
+    split_title = paper_title.split(" ")
+    file_title = "_".join(split_title[:3])
+    file_name = f"{file_title}.pdf"
+
     try:
         if not pdf_url.startswith('http'):
             raise ValueError("Invalid URL")
@@ -14,7 +19,7 @@ def download_pdf(pdf_url):
         if not os.path.exists(save_path):
             os.makedirs(save_path)
 
-        pdf_path = os.path.join(save_path, 'downloaded_paper.pdf')
+        pdf_path = os.path.join(save_path, file_name)
         
         with open(pdf_path, 'wb') as file:
             file.write(response.content)

@@ -69,7 +69,7 @@ def process_file(record):
         os.rmdir(output_mmd_path)
         print(f"Local directory {output_mmd_path} deleted")
 
-@app.route("", methods=["POST"])
+@app.route("/rag-paper2", methods=["POST"])
 def sns_listener():
     sns_message = json.loads(request.data)
 
@@ -94,4 +94,4 @@ def sns_listener():
     return jsonify({"status": "ok"}), 200
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=8080)

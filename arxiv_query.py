@@ -1,11 +1,11 @@
 import arxiv
 
-def query_arxiv(search_word):
+def query_arxiv(paper_title):
     try:
         arxiv_client = arxiv.Client()
         response = arxiv_client.results(
             search=arxiv.Search(
-                query=search_word,
+                query=paper_title,
                 sort_by=arxiv.SortCriterion.Relevance,
                 sort_order=arxiv.SortOrder.Descending,
                 max_results=1, # only get the top result(paper)
